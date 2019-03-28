@@ -9,7 +9,7 @@
 
 - 技术栈：
 
-  react(16.8.6) + react-router + redux + webpack + styled-components
+  react16 + react-router4 + redux + webpack + styled-components
 
 - 功能：
 
