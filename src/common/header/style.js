@@ -10,9 +10,10 @@ export const HeaderWrapper = styled.header`
 export const HeaderMain = styled.main`
     box-sizing: border-box;
     height: 100%;
-    width: 90%;
+    min-width: 980px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 5px;
+    padding: 5px 0;
     display: flex;
     align-item: center;
 `
@@ -28,14 +29,14 @@ export const Logo = styled.a.attrs({
     cursor: pointer;
 `
 
-export const SearchBox = styled.input`
+export const SearchInput = styled.input`
     box-sizing: border-box;
     width: 180px;
     border: none;
     outline: none;
     background: url(${searchIcon}) 4px 4px no-repeat #888;
     color: #666;
-    padding-left: 24px;
+    padding: 0 12px 0 24px;
     height: 26px;
     border-radius: 13px;
     margin: 9px auto 0 15px;

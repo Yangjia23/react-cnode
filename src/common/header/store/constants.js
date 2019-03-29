@@ -1,0 +1,1 @@
+export const SEARCH_VALUE_CHANGE = 'header/search_value_change'
