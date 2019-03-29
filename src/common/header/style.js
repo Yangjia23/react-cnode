@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.header`
 
 export const HeaderMain = styled.main`
     box-sizing: border-box;
+    width: 90%;
     height: 100%;
     min-width: 980px;
     max-width: 1400px;
