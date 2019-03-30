@@ -13,31 +13,32 @@ export const HomeMain = styled.div`
   flex: 1;
   width: calc(100% - 305px);
   margin-right: 15px;
+  background: #fff;
 `
 
 export const TabWrapper = styled.div`
   padding: 10px;
   background-color: #f6f6f6;
   border-radius: 3px 3px 0 0;
-`
-
-export const TabItem = styled.a`
-  font-size: 14px;
-  margin: 0 10px;
-  color: #80bd01;
-  cursor: pointer;
-  line-height: 20px;
-  &.current-tab{
-    color: #fff;
-    background: #80bd01;
-    padding: 3px 4px;
-    border-radius: 3px;
-    &:hover{
+  .tab-item {
+    font-size: 14px;
+    margin: 0 10px;
+    color: #80bd01;
+    cursor: pointer;
+    line-height: 20px;
+    text-decoration: none;
+    &.current-tab{
       color: #fff;
+      background: #80bd01;
+      padding: 3px 4px;
+      border-radius: 3px;
+      &:hover{
+        color: #fff;
+      }
     }
-  }
-  &:hover{
-    color: #005580;
+    &:hover{
+      color: #005580;
+    }
   }
 `
 
@@ -63,7 +64,7 @@ export const ListItem = styled.div`
       color: #9e78c0;
     }
     .count-seperator{
-      margin: 0 3px;
+      margin: 0 1px;
       font-size: 10px;
     }
     .count-of-visit{
@@ -120,6 +121,67 @@ export const ListItem = styled.div`
 export const HomeAside = styled.div`
   width: 290px;
   flex-shrink: 0;
-  background: red;
 `
+
+export const LoginWrapper = styled.div`
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  .login-title{
+    color: #555;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .login-input{
+    box-sizing: border-box;
+    border: 1px solid #c1c1c1;
+    border-radius: 3px;
+    padding: 5px 10px;
+    width: 90%;
+    height: 38px;
+    margin-bottom: 10px;
+    color: #333;
+    outline: none;
+    ::-webkit-input-placeholder {
+      color: pink;
+    }
+   
+  }
+  .login-submit{
+    display: block;
+    outline: none;
+    font-size: 14px;
+    line-height: 2em;
+    padding: 3px 10px;
+    border: none;
+    background: #5bc0de;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 2px;
+    cursor: pointer;
+    &:hover{
+      background: #2f96b4;
+    }
+  }
+`
+
+export const AdvertiseWrap = styled.div`
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+`
+
+export const AdvertiseItem = styled.a`
+  display: block;
+  border: 1px solid #ddd;
+  text-align: center;
+  line-height: 48px;
+  font-size: 16px;
+  cursor: pointer;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+`
+
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 
-export default class Topic extends Component {
+export default class Friends extends Component {
   render() {
     return (
       <div>
-        topic
       </div>
     )
   }

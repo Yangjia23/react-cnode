@@ -6,7 +6,8 @@ import Api from '../../api'
 import Tab from './subpage/Tab'
 import List from './subpage/List'
 import Login from './subpage/Login'
-import Topic from './subpage/Topic'
+import Friends from './subpage/Friends'
+import Advertise from './subpage/Advertise'
 
 class Home extends Component {
   render() {
@@ -18,7 +19,8 @@ class Home extends Component {
         </HomeMain>
         <HomeAside>
           <Login />
-          <Topic />
+          <Advertise />
+          <Friends />
         </HomeAside>
       </HomeWrapper>
     )

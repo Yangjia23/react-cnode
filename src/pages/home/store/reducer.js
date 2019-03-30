@@ -3,6 +3,8 @@ import {ACTIVE_TAB_CHANGE, INIT_TOPIC_LIST} from './constants'
 
 const defaultState = fromJS({
   activeTab: 'all',
+  limit: 20,
+  page: 1,
   tabList: [
     {label: '全部', value: 'all'},
     {label: '精华', value: 'good'},

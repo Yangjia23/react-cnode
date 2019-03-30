@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { actionCreater } from '../store'
-import {TabWrapper, TabItem} from '../style';
+import {TabWrapper} from '../style';
 
 class Tab extends Component {
   render() {
@@ -9,12 +10,13 @@ class Tab extends Component {
       <TabWrapper>
         {
           this.props.tabList.map((item) => {
-            return <TabItem
-              className={item.get('value') === this.props.activeTab ? 'current-tab' : ''}
+            return <Link
+              key={item.get('value')}
+              to={'?tab=' + item.get('value')}
               onClick={this.props.handleTabClick.bind(this, item.get('value'))}
-              key={item.get('value')}>
+              className={item.get('value') === this.props.activeTab ? 'current-tab tab-item' : 'tab-item'}>
                 {item.get('label')}
-              </TabItem>
+            </Link>
           })
         }
       </TabWrapper>

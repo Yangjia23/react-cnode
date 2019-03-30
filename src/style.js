@@ -43,4 +43,8 @@ export const GlobalStyle = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  body{
+    background: #e1e1e1;
+  }
 `;

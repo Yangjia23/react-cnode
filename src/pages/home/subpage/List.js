@@ -24,7 +24,6 @@ class List extends Component {
                   {item.get('title')}
                 </a>
                 <a className="last-reply-info">
-                  <img className="last-reply-avatar" src="https://avatars2.githubusercontent.com/u/16009062?v=4&s=120"/>
                   <span className="last-reply-time">2小时前</span>
                 </a>
               </ListItem>
