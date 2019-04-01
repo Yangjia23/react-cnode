@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import {ListItem} from '../style';
 
 class List extends Component {
+  constructor (props) {
+    super(props);
+    this.replaceTypes = this.replaceTypes.bind(this);
+    this.replaceTime = this.replaceTime.bind(this);
+  }
   render() {
     return (
       <div>
@@ -19,13 +27,17 @@ class List extends Component {
                   <span className="count-seperator">/</span>
                   <span className="count-of-visit">{item.get('visit_count')}</span>
                 </div>
-                <span className="tab-type">分享</span>
-                <a className="topic-title" title={item.get('title')}>
+                <span className={(item.get('top') || item.get('good')) ? 'active tab-type' : 'tab-type'}>
+                  {this.replaceTypes(item.get('top'), item.get('good'), item.get('tab'))}
+                </span>
+                <Link className="topic-title" title={item.get('title')} to={'topic/' + item.get('id')}>
                   {item.get('title')}
-                </a>
-                <a className="last-reply-info">
-                  <span className="last-reply-time">2小时前</span>
-                </a>
+                </Link>
+                <div className="last-reply-info">
+                  <span className="last-reply-time">
+                    {this.replaceTime(item.get('last_reply_at'))}
+                  </span>
+                </div>
               </ListItem>
             )
           })
@@ -33,10 +45,27 @@ class List extends Component {
       </div>
     )
   }
+  replaceTypes (isTop, isGood, tab) {
+    const currentItem = this.props.tabList.find(item => item.get('value') === tab)
+    if (!currentItem) {
+      console.log(tab)
+    }
+    if (isTop) {
+      return '置顶'
+    } else if (isGood) {
+      return '精华'
+    } else {
+      return currentItem && currentItem.get('label') || '--'
+    }
+  }
+  replaceTime (lastReplyTime) {
+    return moment(lastReplyTime).startOf().fromNow()
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
+    tabList: state.getIn(['home', 'tabList']),
     topicList: state.getIn(['home', 'topicList'])
   }
 }

@@ -1,21 +1,5 @@
 import styled from 'styled-components'
 
-export const HomeWrapper = styled.div`
-  margin: 15px auto;
-  width: 90%;
-  max-width: 1400px;
-  min-width: 960px;
-  min-height: 400px;
-  display: flex;
-`
-
-export const HomeMain = styled.div`
-  flex: 1;
-  width: calc(100% - 305px);
-  margin-right: 15px;
-  background: #fff;
-`
-
 export const TabWrapper = styled.div`
   padding: 10px;
   background-color: #f6f6f6;
@@ -78,16 +62,22 @@ export const ListItem = styled.div`
     padding: 2px 4px;
     font-size: 12px;
     border-radius: 3px;
+    &.active{
+      background-color: #80bd01;
+      color: #fff;
+    }
   }
   .topic-title{
     flex: 1;
     max-width: 70%;
     margin: 0 auto 0 8px;
     color: #333;
+    line-height: 1.5em;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
@@ -117,10 +107,50 @@ export const ListItem = styled.div`
   }
 `
 
-
-export const HomeAside = styled.div`
-  width: 290px;
-  flex-shrink: 0;
+export const PaginationWrap = styled.div`
+    white-space: nowrap;
+    padding: 2px 5px;
+    margin: 10px 0;
+    color: #303133;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    .page-btn{
+      border: none;
+      margin: 0 5px;
+      background-color: #f4f4f5;
+      color: #606266;
+      min-width: 30px;
+      border-radius: 2px;
+      height: 26px;
+      line-height: 26px;
+      vertical-align: top;
+      box-sizing: border-box;
+      cursor: pointer;
+      outline: none;
+      &:disabled{
+        color: #c0c4cc;
+        cursor: not-allowed;
+      }
+    }
+    .page-list{
+      .page-number{
+        margin: 0 5px;
+        background-color: #f4f4f5;
+        color: #606266;
+        min-width: 30px;
+        border-radius: 2px;
+        height: 26px;
+        line-height: 26px;
+        vertical-align: top;
+        box-sizing: border-box;
+        text-align: center;
+        &.active{
+          background-color: #80bd01;
+          color: #fff;
+        }
+      }
+    }
 `
 
 export const LoginWrapper = styled.div`

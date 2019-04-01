@@ -35,6 +35,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleTabClick (val) {
       dispatch(actionCreater.activeTabChange(val))
+      dispatch(actionCreater.currentPageChange(0))
+      const data = {
+        page: 1,
+        tab: val,
+        limit: 20
+      }
+      dispatch(actionCreater.getTopicData(data))
     }
   }
 }

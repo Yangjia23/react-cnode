@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import {ACTIVE_TAB_CHANGE, INIT_TOPIC_LIST} from './constants'
+import {ACTIVE_TAB_CHANGE, INIT_TOPIC_LIST, CURRENT_PAGE_CHANGE} from './constants'
 
 const defaultState = fromJS({
   activeTab: 'all',
@@ -19,6 +19,13 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case ACTIVE_TAB_CHANGE: {
       return state.set('activeTab', action.value)
+    }
+    case CURRENT_PAGE_CHANGE: {
+      if (action.value) {
+        return state.update('page', value => value + action.value)
+      } else {
+        return state.set('page', 1)
+      }
     }
     case INIT_TOPIC_LIST: {
       return state.set('topicList', fromJS(action.value))

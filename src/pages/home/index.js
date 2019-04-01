@@ -1,48 +1,69 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreater } from './store'
-import {HomeWrapper, HomeMain, HomeAside} from './style';
-import Api from '../../api'
+import {PageWrapper, PageMain, PageAside} from '../../style';
 import Tab from './subpage/Tab'
 import List from './subpage/List'
+import Pagination from './subpage/Pagination'
 import Login from './subpage/Login'
 import Friends from './subpage/Friends'
 import Advertise from './subpage/Advertise'
 
 class Home extends Component {
+  constructor (props) {
+    super(props);
+    this.handleCurrentPageChange = this.handleCurrentPageChange.bind(this)
+    this.getTopicDataList = this.getTopicDataList.bind(this)
+  }
   render() {
     return (
-      <HomeWrapper>
-        <HomeMain>
+      <PageWrapper>
+        <PageMain>
           <Tab></Tab>
           <List />
-        </HomeMain>
-        <HomeAside>
+          <Pagination currentPage={this.props.page} currentChange={this.handleCurrentPageChange}></Pagination>
+        </PageMain>
+        <PageAside>
           <Login />
           <Advertise />
           <Friends />
-        </HomeAside>
-      </HomeWrapper>
+        </PageAside>
+      </PageWrapper>
     )
   }
   componentDidMount () {
+    this.getTopicDataList()
+  }
+  async handleCurrentPageChange (val) {
+    await this.props.currentChange(val)
+    this.getTopicDataList()
+  }
+  getTopicDataList ({page, tab, limit} = this.props) {
     const data = {
-      page: 1,
-      tab: 'all',
-      limit: 20
+      page,
+      tab,
+      limit
     }
-    Api.getTopics(data).then(res => {
-      if (res && res.data) {
-        this.props.initTopicList(res.data)
-      }
-    })
+    const action = actionCreater.getTopicData(data)
+    this.props.getTopicData(action)
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    tab: state.getIn(['home', 'activeTab']),
+    page: state.getIn(['home', 'page']),
+    limit: state.getIn(['home', 'limit'])
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  initTopicList (dataList) {
-    dispatch(actionCreater.initTopicList(dataList))
+  currentChange (val) {
+    dispatch(actionCreater.currentPageChange(val))
+  },
+  getTopicData (action) {
+    dispatch(action)
   }
 })
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

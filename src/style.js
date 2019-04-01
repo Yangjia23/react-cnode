@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import styled from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -48,3 +49,24 @@ export const GlobalStyle = createGlobalStyle`
     background: #e1e1e1;
   }
 `;
+
+export const PageWrapper = styled.div`
+  margin: 15px auto;
+  width: 90%;
+  max-width: 1400px;
+  min-width: 960px;
+  min-height: 400px;
+  display: flex;
+`
+
+export const PageMain = styled.div`
+  flex: 1;
+  width: calc(100% - 305px);
+  margin-right: 15px;
+  background: #fff;
+`
+
+export const PageAside = styled.div`
+  width: 290px;
+  flex-shrink: 0;
+`
